@@ -1,10 +1,12 @@
-<php 
-class clConfigEntidad() 
+<?php 
+class clConfigEntidad
 { 
     private $Usuario, $Servidor, $BaseDatos, $Clave;
      public function setearServidor($valor) 
-     { 
-         if(is_nu||($valor) || !isset($valor) || (strlen($valor) <=0)) { $this->Servidor =nu||;
+    { 
+        if(is_null($valor) || !isset($valor) || (strlen($valor) <=0))
+         {
+              $this->Servidor =null;
     } else
     {
     $this->Servidor =trim($valor);
@@ -12,15 +14,20 @@ class clConfigEntidad()
     }
     public function setearBaseDatos($valor)
     {
-    if(is_nu||($valor) || !isset($valor) || (strlen($valor) <=0)) { $this->BaseDatos = nu||;} else
+    if(is_null($valor) || !isset($valor) || (strlen($valor) <=0))
+     { 
+         $this->BaseDatos = null;
+        } else
         {
-        $this->BaseDatos =trim($valor)
+        $this->BaseDatos =trim($valor);
         }
 
     }
     public function setearUsuario($valor)
     {
-        if(is_nu||($valor) || !isset($valor) || (strlen($valor) <=0)) { $this->Usuario =nu||;
+        if(is_null($valor) || !isset($valor) || (strlen($valor) <=0)) 
+        {
+             $this->Usuario =null;
             }
             else
             {
@@ -30,9 +37,12 @@ class clConfigEntidad()
 
     public function setearClave($valor)
     {
-            if(is_nu||($valor) || !isset($valor) || (strlen($valor) <=0)) { $this->Clave =nu||;
+            if(is_null($valor) || !isset($valor) || (strlen($valor) <=0)) 
+            {
+                 $this->Clave =null;
                 }else
-                { $this->Clave =trim($valor);
+                { 
+                    $this->Clave =trim($valor);
                 }
     }
 
@@ -54,41 +64,37 @@ class clConfigEntidad()
     }
     public function obtenerDatosCargados()
     {
-        $datosCargados;
+        $datosCargados=array();
         if(!is_null($this->Servidor))
             $datosCargados [] = "Sevidor";
         if(!is_null($this->BaseDatos))
-        $datosCargados [] = "BaseDatos";    
+        $datosCargados [] = "DB";    
         if(!is_null($this->Usuario))
         $datosCargados [] = "Usuario";
         if(!is_null($this->Clave))
         $datosCargados [] = "Clave";    
     }
-    private function modificarArchivo($objetoClassConfiguracionEntidad)
+    public function decriptServidor
+    ($valor)
     {
-        $arrayArrayDatosCArgados = $objetoClassConfiguracionEntidad->obtenerDatosCargados();
-        for($i=0;$i < count($arrayDatosCargados);$i++)
-        {
-            $arrayLineasArchivo = file($this->rutaCompleta);
-            for ($j=0; $j < count($arrayLineasArchivo); $j++)
-            {
-                $linea = $arrayLineasArchivo[$j];
-                $pos = strpos($linea, $arrayDatosCargados[$i]);
-                if($pos !== false)
-                {
-                    array_splice($arrayLineasArchivo, $j, 1);
-                }
-                $archivo = fopen($this->rutaCompleta, "w+b");
-                foreach($arrayLineasArchivo as $line)
-                {
-                    echo '</> escribió ['.$i.']'.$line;
-                    fwrite($archivo, $line);
-                }
-                fwrite($archivo,"\r\n".$arrayArrayDatosCArgados[$i].":");
-                fclose($archivo);
-            }
-        }
+        $this->Servidor = $this->objClsEncript->desencriptar(trim($valor));
     }
+    public function decriptDB
+    ($valor)
+    {
+        $this->DB = $this->objClsEncript->desencriptar(trim($valor));
+    }
+    public function decriptUsuario
+    ($valor)
+    {
+        $this->Usuario = $this->objClsEncript->desencriptar(trim($valor));
+    }
+    public function decriptClave
+    ($valor)
+    {
+        $this->Clave = $this->objClsEncript->desencriptar(trim($valor));
+    }
+    
 
 }
 

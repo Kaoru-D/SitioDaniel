@@ -1,0 +1,5 @@
+Servidor: NFZ0T1I2V3FnOFdMOFRtSU9scTRSdz09
+Sevidor:Array
+DB:Array
+Usuario:Array
+Clave:Array

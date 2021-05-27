@@ -14,24 +14,20 @@ class clsConfiguracion
     {
         $this->rutaCompleta = $this->ruta . $this->nombre;
     }
-    private function actualizarArchivo($objetoClassConfiguracionEntidad)
+    public function actualizarArchivo($objetoClassConfiguracionEntidad)
     {
-        if ($this->validarExistenciaArchivo($objetoClassConfiguracionEntidad)) {
+        if($this->validarExistenciaArchivo()) {
             $this->modificarArchivo($objetoClassConfiguracionEntidad);
         } else {
-            $this->LeerConfiguracion($objetoClassConfiguracionEntidad);
+            $this->crearArchivo($objetoClassConfiguracionEntidad);
         }
     }
-    private function validarExistenciaArchivo($objetoClassConfiguracionEntidad)
+    private function validarExistenciaArchivo()
     {
-        if (file_exists($this->rutaCompleta)) {
-            echo "El archivo " . $this->nombre . " existe en la ruta: " . $this->ruta;
-            return true;
-            $this->modificarArchivo($objetoClassConfiguracionEntidad);
-        } else {
-            echo "El archivo " . $this->nombre . " no existe en la ruta: " . $this->ruta;
-            return false;
-            $this->crearArchivo($objetoClassConfiguracionEntidad);
+        if (file_exists($this->rutaCompleta)) {            
+            return true;            
+        } else {            
+            return false;            
         }
     }
 
@@ -41,7 +37,7 @@ class clsConfiguracion
         if ($archivo === false) {
             echo '</br>Error al intentar crear el archivo';
         } else {
-            echo 'Se creó el archivo correctamente';
+            //echo 'Se creó el archivo correctamente';
             fwrite($archivo, "Servidor: " . $objetoClassConfiguracionEntidad->obtenerServidor() . "\r\n");
             fwrite($archivo, "DB: " . $objetoClassConfiguracionEntidad->obtenerBaseDatos() . "\r\n");
             fwrite($archivo, "Usuario: " . $objetoClassConfiguracionEntidad->obtenerUsuario() . "\r\n");
@@ -61,18 +57,18 @@ class clsConfiguracion
                     array_splice($arrayLineasArchivo, $j, 1);
                 }
                 $archivo = fopen($this->rutaCompleta, "w+b");
-                foreach ($arrayLineasArchivo as $line) {
-                    echo '</> escribió [' . $i . ']' . $line;
-                    fwrite($archivo, $line);
+                foreach ($arrayLineasArchivo as $linea) {
+                    //echo '</> escribió [' . $i . ']' . $linea;
+                    fwrite($archivo, $linea);
                 }
-                fwrite($archivo, "\r\n" . $arrayDatosCArgados[$i] . ":");
+                fwrite($archivo, "\r\n" . $arrayDatosCArgados[$i] . ":".$objetoClassConfiguracionEntidad->obtenerDatosCargados($i));
                 fclose($archivo);
             }
         }
     }
     public function LeerConfiguracion()
     {
-        $objClasConfiguracionEntidad = new clConfigEntidad();
+        $objetoClassConfiguracionEntidad = new clConfigEntidad();
         $arrayLineasArchivo = file($this->rutaCompleta);
         for ($j = 0; $j < count($arrayLineasArchivo); $j++) {
             $linea = $arrayLineasArchivo[$j];
@@ -81,28 +77,28 @@ class clsConfiguracion
 
                 $caracteres = preg_split('/:/', $linea, -1, PREG_SPLIT_NO_EMPTY);
                 if (count($caracteres) >= 2) {
-                    $objClasConfiguracionEntidad->decriptServidor($caracteres[1]);
+                    $objetoClassConfiguracionEntidad->decriptServidor($caracteres[1]);
                 }
             } else {
                 $pos = strpos($linea, "DB");
                 if ($pos !== false) {
                     $caracteres = preg_split('/:/', $linea, -1, PREG_SPLIT_NO_EMPTY);
                     if (count($caracteres) >= 2) {
-                        $objClasConfiguracionEntidad->decriptDB($caracteres[1]);
+                        $objetoClassConfiguracionEntidad->decriptDB($caracteres[1]);
                     }
                 } else {
                     $pos = strpos($linea, "Usuario");
                     if ($pos !== false) {
                         $caracteres = preg_split('/:/', $linea, -1, PREG_SPLIT_NO_EMPTY);
                         if (count($caracteres) >= 2) {
-                            $objClasConfiguracionEntidad->decriptUsuario($caracteres[1]);
+                            $objetoClassConfiguracionEntidad->decriptUsuario($caracteres[1]);
                         }
                     } else {
                         $pos = strpos($linea, "Clave");
                         if ($pos !== false) {
                             $caracteres = preg_split('/:/', $linea, -1, PREG_SPLIT_NO_EMPTY);
                             if (count($caracteres) >= 2) {
-                                $objClasConfiguracionEntidad->decriptClave($caracteres[1]);
+                                $objetoClassConfiguracionEntidad->decriptClave($caracteres[1]);
                             }
                         }
                     }
@@ -110,6 +106,6 @@ class clsConfiguracion
             }
 
             
-        }return $objClasConfiguracionEntidad;
+        }return $objetoClassConfiguracionEntidad;
     }
 }

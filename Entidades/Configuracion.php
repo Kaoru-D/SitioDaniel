@@ -1,15 +1,19 @@
 <?php 
+include_once('../DataAccess/Encript.php');
 class clConfigEntidad
 { 
-    private $Usuario, $Servidor, $BaseDatos, $Clave;
+    private $Usuario, $Servidor, $BaseDatos, $Clave,$ValoresCargados, $objClsEncript;
+    public function __construct()
+    {
+        $this->objClsEncript=new clsEncript();
+    }
      public function setearServidor($valor) 
     { 
         if(is_null($valor) || !isset($valor) || (strlen($valor) <=0))
          {
               $this->Servidor =null;
-    } else
-    {
-    $this->Servidor =trim($valor);
+    } else  {
+    $this->Servidor =$this->objClsEncript->encriptar(trim($valor));
     }
     }
     public function setearBaseDatos($valor)
@@ -19,7 +23,7 @@ class clConfigEntidad
          $this->BaseDatos = null;
         } else
         {
-        $this->BaseDatos =trim($valor);
+        $this->BaseDatos =$this->objClsEncript->encriptar(trim($valor));
         }
 
     }
@@ -31,7 +35,7 @@ class clConfigEntidad
             }
             else
             {
-            $this->Usuario =trim($valor);
+            $this->Usuario =$this->objClsEncript->encriptar(trim($valor));
             }
     }
 
@@ -42,7 +46,7 @@ class clConfigEntidad
                  $this->Clave =null;
                 }else
                 { 
-                    $this->Clave =trim($valor);
+                    $this->Clave =$this->objClsEncript->encriptar(trim($valor));
                 }
     }
 
@@ -65,15 +69,34 @@ class clConfigEntidad
     public function obtenerDatosCargados()
     {
         $datosCargados=array();
+        $this->ValoresCargados=array();
         if(!is_null($this->Servidor))
-            $datosCargados [] = "Sevidor";
+        {
+            $datosCargados [] = "Servidor";
+            $this->ValoresCargados[]=$this->Servidor;
+        }
         if(!is_null($this->BaseDatos))
-        $datosCargados [] = "DB";    
+        {
+        $datosCargados [] = "DB";
+        $this->ValoresCargados[]=$this->BaseDatos;
+        }    
         if(!is_null($this->Usuario))
+        {
         $datosCargados [] = "Usuario";
+        $this->ValoresCargados[]=$this->Usuario;
+        }
         if(!is_null($this->Clave))
-        $datosCargados [] = "Clave";    
+        {
+        $datosCargados [] = "Clave";
+        $this->ValoresCargados[]=$this->Clave;  
+        }
+        return $datosCargados; 
     }
+    public function obtenerValorCargado($indice)
+    {
+        return $this->ValoresCargados[$indice];
+    }
+    
     public function decriptServidor
     ($valor)
     {

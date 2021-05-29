@@ -24,5 +24,9 @@ class clsAdminBD
         return $conexion;
 
     }
+    public function desconectar($conexion)
+    {
+        mysqli_close($conexion);
+    }
 
 }

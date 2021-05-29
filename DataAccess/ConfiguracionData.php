@@ -54,18 +54,23 @@ class clsConfiguracion
                 $linea = $arrayLineasArchivo[$j];
                 $pos = strpos($linea, $arrayDatosCArgados[$i]);
                 if ($pos !== false) {
+                    //echo "<br>".$arrayDatosCArgados[$i];
                     array_splice($arrayLineasArchivo, $j, 1);
                 }
                 $archivo = fopen($this->rutaCompleta, "w+b");
                 foreach ($arrayLineasArchivo as $linea) {
-                    //echo '</> escribió [' . $i . ']' . $linea;
+                    //echo '</> escribió [' . $arrayDatosCArgados[$i]. ']' . $linea;
                     fwrite($archivo, $linea);
                 }
-                fwrite($archivo, "\r\n" . $arrayDatosCArgados[$i] . ":".$objetoClassConfiguracionEntidad->obtenerDatosCargados($i));
+                $valor=$arrayDatosCArgados[$i];
+                //print_r($valor);
+                fwrite($archivo, "\r\n" . $valor . ":".$objetoClassConfiguracionEntidad->obtenerValorCargado($i));
+                
                 fclose($archivo);
             }
         }
     }
+
     public function LeerConfiguracion()
     {
         $objetoClassConfiguracionEntidad = new clConfigEntidad();

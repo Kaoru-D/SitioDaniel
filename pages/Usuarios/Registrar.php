@@ -1,7 +1,9 @@
+<div class="card">
 <div class="card-body register-card-body">
     <p class="login-box-msg"> <b> Registrar información</b></p>
-    <form action="../../Bussines/DataBase.php" method="POST">
-        <div class="row">
+    <form action="../../Bussines/usuarios.php" method="POST">
+        
+    <div class="card">
             <div class="col-12">
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="Nombre de Usuario" id="txtNombreUsuario" name="txtNombreUsuario" maxlength="25" require>
@@ -87,10 +89,10 @@
                     <span class="fas fa-user"></span>
                     <label>Perfil de Usuario</label>
                     <select class="form-control select" style="width: 100%;" name="cmbPerfil" id="cmbPerfil">
-                        <option value="">Inventario</option>
-                        <option value="">Vendedor</option>
-                        <option value="">Administrador</option>
-                        <option value="">Super Usuario</option>
+                        <option value="1">Inventario</option>
+                        <option value="2">Vendedor</option>
+                        <option value="3">Administrador</option>
+                        <option value="4">Super Usuario</option>
                     </select>
                 </div>
                 <div class="col-2"></div>
@@ -98,10 +100,11 @@
                     <div class="col-3"></div>
                     <div class="col-6">
                         <button type="submit" class="btn btn-block bg-gradient-primary">Registrar</button>
+                        <input type="hidden" id="txtOperacion" name="txtOperacion" value="Registrar">
                     </div>
                     <div class="col-3"></div>
                 </div>
             </div>
-        </div>
-</div>
+            </div>
+</div></div>
 </form>

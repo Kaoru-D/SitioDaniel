@@ -13,6 +13,7 @@ class clsAdminBD
             define('DB_NAME',$datosConexion->obtenerBaseDatos());
             define('DB_USER',$datosConexion->obtenerUsuario());
             define('DB_PASS',$datosConexion->obtenerClave());
+            
         }
     }
     public function conectar()

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sitio Daniel | Registro Usuarios</title>
+    <title>Sitio Daniel | Home</title>
     <?php include_once('../Templates/head.php'); ?>
 </head>
 
@@ -77,7 +77,44 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="card">
-                            <div class="col-2"></div>
+                            <div class="col-4">                          
+                            </div>
+                            <?php 
+                            if (isset($_GET['MsgType'])) {
+                                $tipoMensaje=$_GET['MsgType'];
+                                $mensaje=isset($_GET['MsgValue'])?$_GET['MsgValue']:"";
+                                if ($tipoMensaje === "Err") {
+                                    echo "<div class='alert alert-danger alert-dismissible container-fluid' role='alert'>
+                                    <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+                                    <h5><i class='icon fas fa-ban'></i>Error!</h5>".$mensaje."</div>";
+                                }
+                                if ($tipoMensaje === "Ext") {
+                                    echo "<div class='alert alert-success alert-dismissible container-fluid'>
+                                    <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+                                    <h5><i class='icon fas fa-check'></i> Alert!</h5>"
+                                    .$mensaje."
+                                  </div>";
+                                }
+                            }
+                            
+                            if (isset($_GET['Op'])) {
+                                $opcion=$_GET['Op'];
+                                if ($opcion === "RUser") {
+                                    include_once('../Usuarios/Registrar.php');
+                                }
+                                elseif ($opcion === "RClient") {
+                                    include_once('../Terceros/Registrar.php');
+                                }
+                                elseif ($opcion === "RProvider") {
+                                    include_once('../Terceros/Registrar.php');
+                                }
+                                elseif ($opcion === "RProduct") {
+                                    include_once('../Productos/Registrar.php');
+                                }
+                            }
+                            ?>
+                             <div class="col-4">                          
+                            </div>
                         </div>
 
                     </div>

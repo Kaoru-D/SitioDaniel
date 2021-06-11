@@ -105,7 +105,7 @@ class clConfigEntidad
     public function decriptDB
     ($valor)
     {
-        $this->DB = $this->objClsEncript->desencriptar(trim($valor));
+        $this->BaseDatos = $this->objClsEncript->desencriptar(trim($valor));
     }
     public function decriptUsuario
     ($valor)

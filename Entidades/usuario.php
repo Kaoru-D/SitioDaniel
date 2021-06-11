@@ -59,12 +59,20 @@ class clsUsuarioEntidad
     }
     public function setearEstadoUsuario($value)
     {
+        
         $this->EstadoUsuario= trim($value);
+        
     }
     public function setearUsuarioCreacion($value)
     {
+        if (is_null($value)||!isset($value)||(strlen($value))<=0) {
+            $this->UsuarioCreacion="system";
+        }else
+        {
         $this->UsuarioCreacion= trim($value);
+        }
     }
+    
     public function setearFechaCreacion($value)
     {
         $this->FechaCreacion= trim($value);
@@ -77,5 +85,77 @@ class clsUsuarioEntidad
     {
         $this->FechaModificacion= trim($value);
     }
+    public function obtenerNombreUsuario()
+    {
+        return $this->NombreUsuario;
+    }
+    public function obtenerPrimerNombre()
+    {
+        return $this->PrimerNombre;
+    }
+    public function obtenerSegundoNombre()
+    {
+        return $this->SegunNombre;
+    }
+    public function obtenerPrimerApellido()
+    {
+        return $this->PrimerApellido;
+    }
+    public function obtenerSegundoApellido()
+    {
+        return $this->SegundoApellido;
+    }
+    public function obtenerEmail()
+    {
+        return $this->Email;
+    }
+    public function obtenerIdentificacion()
+    {
+        return $this->Identificacion;
+    }
+    public function obtenerCelular()
+    {
+        return $this->Celular;
+    }
+    public function obtenerDireccion()
+    {
+        return $this->Direccion;
+    }
+    public function obtenerPerfilUsuario()
+    {
+        return $this->PerfilUsuario;
+    }
+    public function obtenerPassUsuario()
+    {
+        return $this->PassUsuario;
+    }
+    public function obtenerEstadoUsuario()
+    {
+        return $this->EstadoUsuario;
+    }
+    public function obtenerUsuarioCreacion()
+    {
+        if (is_null($this->UsuarioCreacion)||!isset($this->UsuarioCreacion)||(strlen($this->UsuarioCreacion))<=0) {
+            return"system";
+        }else
+        {
+        return $this->UsuarioCreacion;
+        }
+    }
+    public function obtenerFechaCreacion()
+    {
+        return $this->FechaCreacion;
+    }
+    public function obtenerUsuarioModificacion()
+    {
+        return $this->UsuarioModificacion;
+    }
+    public function obtenerFechaModificacion()
+    {
+        return $this->FechaModificacion;
+    }
+
+
+
 }
 ?>

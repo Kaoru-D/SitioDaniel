@@ -56,18 +56,7 @@
                     </a>
 
                     <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="?Op=RClient" class="nav-link">
-                                <i class="far fa-edit nav-icon"></i>
-                                <p>Registrar</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="?Op=CClient" class="nav-link">
-                                <i class="fas fa-search nav-icon"></i>
-                                <p>Consultar</p>
-                            </a>
-                        </li>
+                        
                         <li class="nav-item">
                             <a href="?Op=AClient" class="nav-link">
                                 <i class="fas fa-undo nav-icon"></i>
@@ -110,39 +99,7 @@
                     </ul>
                 </li>
             </ul>
-            <ul class="nav nav-treeview">
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-truck"></i>
-                        <p>
-                            Proveedores
-                            <i class="fas fa-angle-left right"></i>
-                            <span class="badge badge-info right"></span>
-                        </p>
-                    </a>
-
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="?Op=RProvider" class="nav-link">
-                                <i class="far fa-edit nav-icon"></i>
-                                <p>Registrar</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="?Op=CProvider" class="nav-link">
-                                <i class="fas fa-search nav-icon"></i>
-                                <p>Consultar</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="?Op=AProvider" class="nav-link">
-                                <i class="fas fa-undo nav-icon"></i>
-                                <p>Actualizar</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
+            
             <ul class="nav nav-treeview">
                 <li class="nav-item">
                     <a href="#" class="nav-link">
@@ -155,30 +112,14 @@
                     </a>
 
                     <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="?Op=RSale" class="nav-link">
-                                <i class="far fa-edit nav-icon"></i>
-                                <p>Registrar</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="?Op=CSale" class="nav-link">
-                                <i class="fas fa-search nav-icon"></i>
-                                <p>Consultar</p>
-                            </a>
-                        </li>
+                        
                         <li class="nav-item">
                             <a href="?Op=ASale" class="nav-link">
                                 <i class="fas fa-undo nav-icon"></i>
                                 <p>Actualizar</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="?Op=User" class="nav-link">
-                                <i class="fas fa-file-pdf nav-icon"></i>
-                                <p>Reportes</p>
-                            </a>
-                        </li>
+                       
                     </ul>
                 </li>
             </ul>
@@ -194,30 +135,14 @@
                     </a>
 
                     <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="?Op=RPurchases" class="nav-link">
-                                <i class="far fa-edit nav-icon"></i>
-                                <p>Registrar</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="?Op=CPurchases" class="nav-link">
-                                <i class="fas fa-search nav-icon"></i>
-                                <p>Consultar</p>
-                            </a>
-                        </li>
+                        
                         <li class="nav-item">
                             <a href="?Op=APurchases" class="nav-link">
                                 <i class="fas fa-undo nav-icon"></i>
                                 <p>Actualizar</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="?Op=User" class="nav-link">
-                                <i class="fas fa-file-pdf nav-icon"></i>
-                                <p>Reportes</p>
-                            </a>
-                        </li>
+                        
                     </ul>
                 </li>
             </ul>

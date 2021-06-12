@@ -19,6 +19,17 @@
 
 <body class="hold-transition login-page">
   <div class="login-box">
+    <?php
+    if (isset($_GET['MsgType'])) {
+      $tipoMensaje = $_GET['MsgType'];
+      $mensaje = isset($_GET['MsgValue']) ? $_GET['MsgValue'] : "";
+      if ($tipoMensaje === "Err") {
+        echo "<div class='alert alert-danger alert-dismissible container-fluid' role='alert'>
+       <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+       <h5><i class='icon fas fa-ban'></i>Error!</h5>" . $mensaje . "</div>";
+      }
+    }
+    ?>
     <!-- /.login-logo -->
     <div class="card card-outline card-primary">
       <div class="card-header text-center">
@@ -27,9 +38,9 @@
       <div class="card-body">
         <p class="login-box-msg">Ingresa tu usuario para iniciar sesión</p>
 
-        <form action="index3.html" method="post">
+        <form action="Bussines/usuarios.php" method="post">
           <div class="input-group mb-3">
-            <input type="email" class="form-control" placeholder="Usuario" id="txtUsuario" name="txtUsuario"/>
+            <input type="text" class="form-control" placeholder="Usuario" id="txtUsuario" name="txtUsuario" />
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-envelope"></span>
@@ -37,7 +48,7 @@
             </div>
           </div>
           <div class="input-group mb-3">
-            <input type="password" class="form-control" placeholder="Password"id="txtClave" name="txtClave" />
+            <input type="password" class="form-control" placeholder="Password" id="txtClave" name="txtClave" />
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-lock"></span>
@@ -56,7 +67,7 @@
             </div>
             <div class="col-3"></div>
             <!-- /.col -->
-           <!-- </div>
+            <!-- </div>
         </form>
         <p></p>
         <p class="text-center">
@@ -67,17 +78,17 @@
         </p>
       </div>
        /.card-body -->
-    </div>
-    <!-- /.card -->
-  </div>
-  <!-- /.login-box -->
+          </div>
+          <!-- /.card -->
+      </div>
+      <!-- /.login-box -->
 
-  <!-- jQuery -->
-  <script src="plugins/jquery/jquery.min.js"></script>
-  <!-- Bootstrap 4 -->
-  <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <!-- AdminLTE App -->
-  <script src="dist/js/adminlte.min.js"></script>
+      <!-- jQuery -->
+      <script src="plugins/jquery/jquery.min.js"></script>
+      <!-- Bootstrap 4 -->
+      <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+      <!-- AdminLTE App -->
+      <script src="dist/js/adminlte.min.js"></script>
 </body>
 
 </html>
